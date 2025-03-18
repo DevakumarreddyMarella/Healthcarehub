@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Book Appointment | HealthCare Hub</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Book-Appointment.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-4">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">HealthCare <span class="text-warning">Hub</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="find-doctors.html">Find Doctors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Book Appointment</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container appointment-container"> 
+        
+        <div class="doctor-card mb-4">
+            <img src="" id="doctor-image" alt="Doctor">
+            <h4 id="doctor-name"></h4>
+            <p id="doctor-specialty" class="text-muted"></p>
+            <p id="doctor-location"></p>
+            <p id="doctor-fee0"></p>
+        </div>
+
+        <div class="form-container">
+            <h4 class="text-center mb-3">Book Your Appointment</h4>
+            <form>
+                <div class="mb-3">
+                    <label for="patientName" class="form-label">Your Name</label>
+                    <input type="text" class="form-control" id="patientName" placeholder="Enter your full name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="patientEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="patientEmail" placeholder="Enter your email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="appointmentDate" class="form-label">Select Date</label>
+                    <input type="date" class="form-control" id="appointmentDate" required>
+                </div>
+                <div class="mb-3">
+                    <label for="appointmentTime" class="form-label">Select Time</label>
+                    <input type="time" class="form-control" id="appointmentTime" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Confirm Appointment</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    <!-- JavaScript  -->
+<script>
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("doctor-image").src = getQueryParam("image");
+        document.getElementById("doctor-name").textContent = getQueryParam("name");
+        document.getElementById("doctor-specialty").textContent = getQueryParam("specialty") + " | " + getQueryParam("experience") + "+ Years Experience";
+        document.getElementById("doctor-location").textContent = "📍 " + getQueryParam("location") + " | ⭐ " + getQueryParam("rating") + "/5";
+        document.getElementById("doctor-fee").textContent = "💰 ₹" + getQueryParam("fee") + " Consultation Fee";
+    });
+</script>
+
+</body>
+</html>
